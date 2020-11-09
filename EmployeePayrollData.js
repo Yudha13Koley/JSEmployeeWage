@@ -19,7 +19,12 @@ class EmployeePayrollData {
         return this._name;
     }
     set name(name){
+        let nameRegex=RegExp('^[A-Z]{1}[a-z]{2,}$');
+        if(nameRegex.test(name)){
         this._name=name;
+    }else{
+        throw 'Name is in Incorrect Format';
+    }
     }
 
     //Methods
@@ -33,7 +38,11 @@ class EmployeePayrollData {
 
 let empData=new EmployeePayrollData(1,"Yudhajit",50000);
 console.log(empData.toString());
-empData.name="Yudhajit Koley";
+try{
+empData.name="Joe";
 console.log(empData.toString());
+}catch(e){
+    console.log(e);
+}
 let empData2=new EmployeePayrollData(2,"Kiran",60000,"M",new Date());
 console.log(empData2.toString());
